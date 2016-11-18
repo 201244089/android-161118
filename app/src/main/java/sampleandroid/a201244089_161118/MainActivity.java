@@ -5,21 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    String num1;
-    String num2;
-    double resultnum;
-    Button plus;
-    Button minus;
-    Button multi;
-    Button div;
+    Button plus, minus, multi, div;
     Button remainnum;
     EditText input1;
     EditText input2;
-    EditText result;
-
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,31 +22,22 @@ public class MainActivity extends AppCompatActivity {
 
         input1 = (EditText)findViewById(R.id.input1);
         input2 = (EditText)findViewById(R.id.input2);
-        result = (EditText)findViewById(R.id.resulttxt);
+        result = (TextView) findViewById(R.id.resulttxt);
 
 
         plus = (Button)findViewById(R.id.plusbtn);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                    num1 = input1.getText().toString();
-                    num2 = input2.getText().toString();
-
-                    resultnum = Double.parseDouble(num1) + Double.parseDouble(num2);
-                    result.setText(Double.toString(resultnum));
+                calculator('+');
             }
         });
 
         minus = (Button)findViewById(R.id.minusbtn);
-        plus.setOnClickListener(new View.OnClickListener() {
+        minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = input1.getText().toString();
-                num2 = input2.getText().toString();
-
-                resultnum = Double.parseDouble(num1)-Double.parseDouble(num2);
-                result.setText(Double.toString(resultnum));
+                calculator('-');
             }
         });
 
@@ -60,34 +45,54 @@ public class MainActivity extends AppCompatActivity {
         multi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = input1.getText().toString();
-                num2 = input2.getText().toString();
-
-                resultnum = Double.parseDouble(num1)*Double.parseDouble(num2);
-                result.setText(Double.toString(resultnum));
+                calculator('*');
             }
         });
         div = (Button)findViewById(R.id.divbtn);
         multi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = input1.getText().toString();
-                num2 = input2.getText().toString();
-
-                resultnum = Double.parseDouble(num1)/Double.parseDouble(num2);
-                result.setText(Double.toString(resultnum));
+            calculator('/');
             }
         });
         remainnum = (Button)findViewById(R.id.remainbtn);
         remainnum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = input1.getText().toString();
-                num2 = input2.getText().toString();
-
-                resultnum = Double.parseDouble(num1)%Double.parseDouble(num2);
-                result.setText(Double.toString(resultnum));
+                calculator('%');
             }
         });
+    }
+
+    void calculator(char op){
+        double resultnum = 0;
+        double d_num1 = Double.parseDouble(input1.getText().toString());
+        double d_num2 = Double.parseDouble(input2.getText().toString());
+        if(input1.getText().equals(null) || input2.getText().equals(null)){
+            Toast.makeText(getApplicationContext(),"값을 입력하세요.",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            if (op == '+') {
+                resultnum = d_num1 + d_num2;
+            }
+            if (op == '-') {
+                resultnum = d_num1 - d_num2;
+            }
+            if (op == '*') {
+                resultnum = d_num1 * d_num2;
+            }
+            if (op == '/') {
+                if(d_num2 == 0){
+                    Toast.makeText(getApplicationContext(),"0으로 나눌수 없습니다.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    resultnum = d_num1 / d_num2;
+                }
+            }
+            if (op == '%') {
+                resultnum = d_num1 % d_num2;
+            }
+            result.setText(resultnum + "");
+        }
     }
 }

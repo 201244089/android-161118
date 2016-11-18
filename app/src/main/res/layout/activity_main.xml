@@ -67,12 +67,9 @@
         android:id="@+id/remainbtn"
         android:layout_weight="0.06" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/resulttxt"
-        android:layout_weight="0.57" />
+        android:id="@+id/resulttxt" />
 
 </LinearLayout>
