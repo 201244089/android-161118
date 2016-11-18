@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         div = (Button)findViewById(R.id.divbtn);
-        multi.setOnClickListener(new View.OnClickListener() {
+        div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             calculator('/');
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         double resultnum = 0;
         double d_num1 = Double.parseDouble(input1.getText().toString());
         double d_num2 = Double.parseDouble(input2.getText().toString());
-        if(input1.getText().equals(null) || input2.getText().equals(null)){
+        if(input1.getText().length() == 0  || input2.getText().length() == 0){
             Toast.makeText(getApplicationContext(),"값을 입력하세요.",Toast.LENGTH_SHORT).show();
         }
         else {
