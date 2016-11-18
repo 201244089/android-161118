@@ -40,5 +40,40 @@ public class MainActivity extends AppCompatActivity {
                 result.setText(Double.toString(resultnum));
             }
         });
+
+        minus = (Button)findViewById(R.id.minusbtn);
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = input1.getText().toString();
+                num2 = input2.getText().toString();
+
+                resultnum = Double.parseDouble(num1)-Double.parseDouble(num2);
+                result.setText(Double.toString(resultnum));
+            }
+        });
+
+        multi = (Button)findViewById(R.id.multibtn);
+        multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = input1.getText().toString();
+                num2 = input2.getText().toString();
+
+                resultnum = Double.parseDouble(num1)*Double.parseDouble(num2);
+                result.setText(Double.toString(resultnum));
+            }
+        });
+        div = (Button)findViewById(R.id.divbtn);
+        multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = input1.getText().toString();
+                num2 = input2.getText().toString();
+
+                resultnum = Double.parseDouble(num1)/Double.parseDouble(num2);
+                result.setText(Double.toString(resultnum));
+            }
+        });
     }
 }
