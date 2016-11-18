@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     String num1;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button minus;
     Button multi;
     Button div;
+    Button remainnum;
     EditText input1;
     EditText input2;
     EditText result;
@@ -33,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = input1.getText().toString();
-                num2 = input2.getText().toString();
 
-                resultnum = Double.parseDouble(num1)+Double.parseDouble(num2);
-                result.setText(Double.toString(resultnum));
+                    num1 = input1.getText().toString();
+                    num2 = input2.getText().toString();
+
+                    resultnum = Double.parseDouble(num1) + Double.parseDouble(num2);
+                    result.setText(Double.toString(resultnum));
             }
         });
 
@@ -72,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
                 num2 = input2.getText().toString();
 
                 resultnum = Double.parseDouble(num1)/Double.parseDouble(num2);
+                result.setText(Double.toString(resultnum));
+            }
+        });
+        remainnum = (Button)findViewById(R.id.remainbtn);
+        remainnum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = input1.getText().toString();
+                num2 = input2.getText().toString();
+
+                resultnum = Double.parseDouble(num1)%Double.parseDouble(num2);
                 result.setText(Double.toString(resultnum));
             }
         });
